@@ -6,29 +6,40 @@
       <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
       <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
       <link href="webfonts/ss-social-circle.css" rel="stylesheet" />
-      <!--<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">-->
+
+      <!-- https://stackoverflow.com/questions/2385203/can-you-control-gif-animation-with-javascript -->
+      <!-- https://github.com/buzzfeed/libgif-js -->
+
       <script type="text/javascript">
-      function centerLive(){
+      function horizCenter(input){
         width = $(window).width();
-        objectWidth = $("#live").width();
+        objectWidth = $(input).width();
         leftMargin = (width-objectWidth)/2;
-        $("#live").css("left", leftMargin+'px');
+        $(input).css("left", leftMargin+'px');
       }
 
-      function vertCenterChair(){
+      function vertCenter(input){
         height = $(window).height();
-        objectHeight = $("#chairimg").height();
+        objectHeight = $(input).height();
         topMargin = (height - objectHeight)/2;
-        $("#chairimg").css("margin-top", topMargin+'px');
+        $(input).css("margin-top", topMargin+'px');
       }
 
         $(document).ready(function() {
-          centerLive();
-          vertCenterChair();
+          horizCenter("#live");
+          vertCenter('#chairimg');
+          horizCenter("#menu");
+          vertCenter("#menu");
 
           $(window).resize(function() {
-            centerLive();
-            vertCenterChair();
+            horizCenter("#live");
+            vertCenter('#chairimg');
+            horizCenter("#menu");
+            vertCenter("#menu");
+          });
+
+          $('#music').click(function(){
+            $('#menu').css('display','block');
           });
 
         });
@@ -84,6 +95,7 @@
       #goldwash, #music, #live, #news{
         position: fixed;
         text-align: center;
+        cursor: pointer;
       }
 
       #goldwash{
@@ -119,6 +131,19 @@
         right: 10vw;
         z-index: 10;
       }
+
+      #menu{
+        width: 50vw;
+        height: 70vh;
+        min-width: 350px;
+        margin: 0 auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: scroll;
+        display: none;
+        background-color: rgb(11, 14, 11);
+      }
       </style>
     </head>
   <body>
@@ -143,9 +168,9 @@
         <div id="news">
           <img src="images/NEWS.png">
         </div>
-
-        <div class="menu">
-        </div>
+      </div>
+      <div id="menu">
+        Ayyyyyyye this shit way too crazy aye
       </div>
     </div>
 
