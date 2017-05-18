@@ -1,5 +1,153 @@
----
-layout: index
----
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Goldwash Music</title>
+      <meta charset="UTF-8">
+      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+      <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
+      <link href="webfonts/ss-social-circle.css" rel="stylesheet" />
+      <!--<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">-->
+      <script type="text/javascript">
+      function centerLive(){
+        width = $(window).width();
+        objectWidth = $("#live").width();
+        leftMargin = (width-objectWidth)/2;
+        $("#live").css("left", leftMargin+'px');
+      }
 
-<!-- Put content here. -->
+      function vertCenterChair(){
+        height = $(window).height();
+        objectHeight = $("#chairimg").height();
+        topMargin = (height - objectHeight)/2;
+        $("#chairimg").css("margin-top", topMargin+'px');
+      }
+
+        $(document).ready(function() {
+          centerLive();
+          vertCenterChair();
+
+          $(window).resize(function() {
+            centerLive();
+            vertCenterChair();
+          });
+
+        });
+      </script>
+
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+
+      body{
+        width: 100vw;
+        height: 100vh;
+        font-family: 'Index', serif;
+        font-weight: bold;
+        color: rgb(206, 136, 59);
+        background-color: rgb(11, 14, 11);
+      }
+
+      img{
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      #background, #foreground{
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      #chair, #links{
+        margin: 0 auto;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+      }
+
+      #chair{
+        max-width: 1000px;
+        max-height: 1000px;
+      }
+
+      #links{
+        max-width: 1000px;
+        max-height: 1000px;
+      }
+
+      /* #chair needs to be vertically centered */
+
+      #goldwash, #music, #live, #news{
+        position: fixed;
+        text-align: center;
+      }
+
+      #goldwash{
+        width: 90vw;
+        top: 8vh;
+        left: 5vw;
+      }
+      #goldwash img{
+        width: 100%;
+        max-width: 1100px;
+      }
+
+      #music, #live, #news{
+        bottom: 8vh;
+        width: 20vw;
+      }
+
+      #music img, #live img, #news img{
+        width: 100%;
+      }
+
+      #music{
+        left: 10vw;
+        z-index: 10;
+      }
+
+      #live{
+        left: 0;
+        z-index: 1;
+      }
+
+      #news{
+        right: 10vw;
+        z-index: 10;
+      }
+      </style>
+    </head>
+  <body>
+
+    <div id="background">
+      <div id="chair">
+        <img id="chairimg" src="images/big_bg.gif">
+      </div>
+    </div>
+
+    <div id="foreground">
+      <div id="links">
+        <div id="goldwash">
+          <img src="images/WORDMARK.png">
+        </div>
+        <div id="music">
+          <img src="images/MUSIC.png">
+        </div>
+        <div id="live">
+          <img src="images/LIVE.png">
+        </div>
+        <div id="news">
+          <img src="images/NEWS.png">
+        </div>
+
+        <div class="menu">
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
