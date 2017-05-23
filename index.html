@@ -25,21 +25,78 @@
         $(input).css("margin-top", topMargin+'px');
       }
 
+      function musicOn(){
+        $('#music_menu').css('display','block');
+        $('#live_menu').css('display','none');
+        $('#news_menu').css('display','none');
+      }
+
+      function liveOn(){
+        $('#live_menu').css('display','block');
+        $('#music_menu').css('display','none');
+        $('#news_menu').css('display','none');
+      }
+
+      function newsOn(){
+        $('#news_menu').css('display','block');
+        $('#music_menu').css('display','none');
+        $('#live_menu').css('display','none');
+      }
+
+      function menuOff(){
+        $('.css').css('display','none');
+      }
+
         $(document).ready(function() {
           horizCenter("#live");
           vertCenter('#chairimg');
-          horizCenter("#menu");
-          vertCenter("#menu");
+          horizCenter(".menu");
+          vertCenter(".menu");
 
           $(window).resize(function() {
             horizCenter("#live");
             vertCenter('#chairimg');
-            horizCenter("#menu");
-            vertCenter("#menu");
+            horizCenter(".menu");
+            vertCenter(".menu");
           });
 
+          // $('#music_menu').slideToggle();
+          // display: none
+
+          var music_off = 1;
+          var live_off = 1;
+          var news_off = 1;
+
           $('#music').click(function(){
-            $('#menu').css('display','block');
+            menuOff();
+            if(music_off){
+              musicOn();
+              music_off = 0;
+            } else {
+              music_off = 1;
+              $('#music_menu').css('display','none');
+            }
+          });
+          $('#live').click(function(){
+            menuOff();
+            if(live_off){
+              liveOn();
+              live_off = 0;
+            } else {
+              live_off = 1;
+              $('#live_menu').css('display','none');
+            }
+          });
+          $('#news').click(function(){
+            menuOff();
+            if(news_off){
+              newsOn();
+              news_off = 0;
+            } else {
+              news_off = 1;
+              $('#news_menu').css('display','none');
+            }
+
           });
 
         });
@@ -49,6 +106,7 @@
       *{
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
       }
 
       body{
@@ -58,6 +116,17 @@
         font-weight: bold;
         color: rgb(206, 136, 59);
         background-color: rgb(11, 14, 11);
+      }
+
+      a{
+        color: rgb(206, 136, 59);
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid rgb(206, 136, 59);
+      }
+
+      .icon{
+        border-bottom: none;
       }
 
       img{
@@ -132,16 +201,17 @@
         z-index: 10;
       }
 
-      #menu{
+      .menu{
         width: 50vw;
-        height: 70vh;
-        min-width: 350px;
-        margin: 0 auto;
-        position: fixed;
+        max-width: 700px;
+        min-height: 350px;
+        height: 40vh;
         top: 0;
         left: 0;
+        position: fixed;
         overflow-y: scroll;
         display: none;
+        padding: 35px;
         background-color: rgb(11, 14, 11);
       }
       </style>
@@ -169,8 +239,19 @@
           <img src="images/NEWS.png">
         </div>
       </div>
-      <div id="menu">
-        Ayyyyyyye this shit way too crazy aye
+      <div id="music_menu" class="menu">
+        <a class="icon" target="_blank" href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21"><i class="ss-icon">spotify</i></a>&nbsp;
+        <a class="icon" target="_blank" href="https://soundcloud.com/goldwash"><i class="ss-icon">soundcloud</i></a>&nbsp;
+      </div>
+
+      <div id="live_menu" class="menu">
+        LIVE SHIT!
+      </div>
+
+      <div id="news_menu" class="menu">
+        <a class="icon" target="_blank" href="https://www.facebook.com/Goldwashmusic/"><i class="ss-icon">facebook</i></a>&nbsp;
+        <a class="icon" target="_blank" href="http://twitter.com/goldwashmusic"><i class="ss-icon">twitter</i></a>&nbsp;
+        <a class="icon" target="_blank" href="https://www.instagram.com/goldwashmusic/"><i class="ss-icon">instagram</i></a>&nbsp;
       </div>
     </div>
 
