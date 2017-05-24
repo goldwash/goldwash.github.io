@@ -25,6 +25,18 @@
         $(input).css("margin-top", topMargin+'px');
       }
 
+      function adjustText(){
+        chwidth = $("#chairimg").width();
+        chheight = $("#chairimg").height();
+        $("#links").css('width',chwidth+'px');
+        $("#links").css('height',chheight+'px');
+      }
+
+      function menuRatio(){
+        mwidth = $(".menu").width();
+        $(".menu").css('height',mwidth);
+      }
+
       function musicOn(){
         $('#music_menu').css('display','block');
         $('#live_menu').css('display','none');
@@ -44,59 +56,49 @@
       }
 
       function menuOff(){
-        $('.css').css('display','none');
+        $('#music_menu').css('display','none');
+        $('#live_menu').css('display','none');
+        $('#news_menu').css('display','none');
       }
 
         $(document).ready(function() {
-          horizCenter("#live");
           vertCenter('#chairimg');
           horizCenter(".menu");
           vertCenter(".menu");
+          adjustText();
+          //menuRatio();
+          vertCenter('#links');
 
           $(window).resize(function() {
-            horizCenter("#live");
             vertCenter('#chairimg');
+            vertCenter('#links');
             horizCenter(".menu");
             vertCenter(".menu");
+            adjustText();
+            //menuRatio();
           });
 
           // $('#music_menu').slideToggle();
           // display: none
 
-          var music_off = 1;
-          var live_off = 1;
-          var news_off = 1;
-
           $('#music').click(function(){
             menuOff();
-            if(music_off){
-              musicOn();
-              music_off = 0;
-            } else {
-              music_off = 1;
-              $('#music_menu').css('display','none');
-            }
+            musicOn();
           });
           $('#live').click(function(){
             menuOff();
-            if(live_off){
-              liveOn();
-              live_off = 0;
-            } else {
-              live_off = 1;
-              $('#live_menu').css('display','none');
-            }
+            liveOn();
           });
           $('#news').click(function(){
             menuOff();
-            if(news_off){
-              newsOn();
-              news_off = 0;
-            } else {
-              news_off = 1;
-              $('#news_menu').css('display','none');
-            }
+            newsOn();
+          });
 
+          $(document).click(function(event){
+            if (!$(event.target).is("#music, #live, #news")){
+              // thanks https://stackoverflow.com/questions/10851312/document-click-not-in-elements-jquery
+              menuOff();
+            }
           });
 
         });
@@ -134,6 +136,21 @@
         max-height: 100%;
       }
 
+      h2{
+        text-align: center;
+        padding-top: 35px;
+        font-size: 40pt;
+      }
+      h2 a{
+        border-bottom: none;
+      }
+
+      h3{
+        text-align: center;
+        font-size: 11pt;
+        padding-top: 5px;
+      }
+
       #background, #foreground{
         height: 100vh;
         width: 100vw;
@@ -144,75 +161,70 @@
 
       #chair, #links{
         margin: 0 auto;
-        height: 100vh;
-        width: 100vw;
         text-align: center;
-      }
-
-      #chair{
-        max-width: 1000px;
-        max-height: 1000px;
-      }
-
-      #links{
-        max-width: 1000px;
-        max-height: 1000px;
+        max-width: 950px;
+        max-height: 950px;
+        min-width: 300px;
       }
 
       /* #chair needs to be vertically centered */
 
-      #goldwash, #music, #live, #news{
-        position: fixed;
+      #music, #live, #news{
         text-align: center;
         cursor: pointer;
       }
 
       #goldwash{
-        width: 90vw;
-        top: 8vh;
-        left: 5vw;
-      }
-      #goldwash img{
-        width: 100%;
-        max-width: 1100px;
+        width: 75%;
+        margin: 0 auto;
+        position: relative;
+        top: 16%;
+        cursor: pointer;
       }
 
-      #music, #live, #news{
-        bottom: 8vh;
-        width: 20vw;
+      #bottom_links{
+        width: 75%;
+        margin: 0 auto;
+        position: relative;
+        top: 75%;
+      }
+      #bottom_links img{
+        display: inline-block;
+        width: 32%;
       }
 
-      #music img, #live img, #news img{
-        width: 100%;
-      }
-
-      #music{
-        left: 10vw;
-        z-index: 10;
-      }
-
-      #live{
+      .menu, #menubg{
+        top: 0;
         left: 0;
-        z-index: 1;
+        max-width: 480px;
+        /* height stuff */
+        width: 480px;
+        height: 480px;
+        position: fixed;
       }
 
-      #news{
-        right: 10vw;
-        z-index: 10;
+      #menubg{
+        
       }
 
       .menu{
-        width: 50vw;
-        max-width: 700px;
-        min-height: 350px;
-        height: 40vh;
-        top: 0;
-        left: 0;
-        position: fixed;
         overflow-y: scroll;
         display: none;
-        padding: 35px;
+        background-image: url("images/frame.png");
+        background-size: contain;
+        background-repeat: no-repeat;
         background-color: rgb(11, 14, 11);
+        border: 5px solid rgb(11, 14, 11);
+        -webkit-border-radius: 35px;
+        -moz-border-radius: 35px;
+        border-radius: 35px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .menu{
+          position: absolute;
+          top: 400px;
+        }
       }
       </style>
     </head>
@@ -229,30 +241,37 @@
         <div id="goldwash">
           <img src="images/WORDMARK.png">
         </div>
-        <div id="music">
-          <img src="images/MUSIC.png">
-        </div>
-        <div id="live">
-          <img src="images/LIVE.png">
-        </div>
-        <div id="news">
-          <img src="images/NEWS.png">
+        <div id="bottom_links">
+          <img id="music" src="images/MUSIC.png"> <img id="live" src="images/LIVE.png"> <img id="news" src="images/NEWS.png">
         </div>
       </div>
-      <div id="music_menu" class="menu">
-        <a class="icon" target="_blank" href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21"><i class="ss-icon">spotify</i></a>&nbsp;
-        <a class="icon" target="_blank" href="https://soundcloud.com/goldwash"><i class="ss-icon">soundcloud</i></a>&nbsp;
-      </div>
+    </div>
 
-      <div id="live_menu" class="menu">
-        LIVE SHIT!
-      </div>
+    <div id="music_menu" class="menu">
+      <h2>&nbsp;</h2>
+      <h2><a href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21">Spotify</a></h2>
+      <h2><a href="">iTunes</a></h2>
+      <h2><a href="https://soundcloud.com/goldwash">Soundcloud</a></h2>
+    </div>
 
-      <div id="news_menu" class="menu">
-        <a class="icon" target="_blank" href="https://www.facebook.com/Goldwashmusic/"><i class="ss-icon">facebook</i></a>&nbsp;
-        <a class="icon" target="_blank" href="http://twitter.com/goldwashmusic"><i class="ss-icon">twitter</i></a>&nbsp;
-        <a class="icon" target="_blank" href="https://www.instagram.com/goldwashmusic/"><i class="ss-icon">instagram</i></a>&nbsp;
-      </div>
+    <div id="live_menu" class="menu">
+      <h2>&nbsp;</h2>
+      <h2>Stay Tuned...</h2>
+      <h2>&nbsp;</h2>
+      <h2>&nbsp;</h2>
+      <h2>&nbsp;</h2>
+      <h3>North America Booking: LChenfeld@apa-agency.com</h3>
+    </div>
+
+    <div id="news_menu" class="menu">
+      <h2>&nbsp;</h2>
+      <h2> newsletter box ! </h2>
+      <h2><a class="icon" target="_blank" href="https://www.facebook.com/Goldwashmusic/"><i class="ss-icon">facebook</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="http://twitter.com/goldwashmusic"><i class="ss-icon">twitter</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="https://www.instagram.com/goldwashmusic/"><i class="ss-icon">instagram</i></a></h2>
+      <h2>&nbsp;</h2>
+      <h3>Talk: goldwashmusic@gmail.com</h3>
+      <h3>MGMT: jake@holographgroup.com</h3>
+      <h3>Press: paul.odonnell@whiteboardpr.co.uk</h3>
+      <h3>North America Booking: LChenfeld@apa-agency.com</h3>
     </div>
 
   </body>
