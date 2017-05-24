@@ -39,23 +39,27 @@
 
       function musicOn(){
         $('#music_menu').css('display','block');
+        $('#menubg').css('display','block');
         $('#live_menu').css('display','none');
         $('#news_menu').css('display','none');
       }
 
       function liveOn(){
         $('#live_menu').css('display','block');
+        $('#menubg').css('display','block');
         $('#music_menu').css('display','none');
         $('#news_menu').css('display','none');
       }
 
       function newsOn(){
         $('#news_menu').css('display','block');
+        $('#menubg').css('display','block');
         $('#music_menu').css('display','none');
         $('#live_menu').css('display','none');
       }
 
       function menuOff(){
+        $('#menubg').css('display','none');
         $('#music_menu').css('display','none');
         $('#live_menu').css('display','none');
         $('#news_menu').css('display','none');
@@ -66,16 +70,18 @@
           horizCenter(".menu");
           vertCenter(".menu");
           adjustText();
-          //menuRatio();
           vertCenter('#links');
+          vertCenter('#menubg');
+          horizCenter('#menubg');
 
           $(window).resize(function() {
             vertCenter('#chairimg');
-            vertCenter('#links');
             horizCenter(".menu");
             vertCenter(".menu");
             adjustText();
-            //menuRatio();
+            vertCenter('#links');
+            vertCenter('#menubg');
+            horizCenter('#menubg');
           });
 
           // $('#music_menu').slideToggle();
@@ -95,7 +101,12 @@
           });
 
           $(document).click(function(event){
-            if (!$(event.target).is("#music, #live, #news")){
+            console.log($(event.target));
+            // if (!$(event.target).is("#music, #live, #news, .menu")){
+            //   // thanks https://stackoverflow.com/questions/10851312/document-click-not-in-elements-jquery
+            //   menuOff();
+            // }
+            if ($(event.target).is("#foreground, #background, #links, #wordmark")){
               // thanks https://stackoverflow.com/questions/10851312/document-click-not-in-elements-jquery
               menuOff();
             }
@@ -138,8 +149,7 @@
 
       h2{
         text-align: center;
-        padding-top: 35px;
-        font-size: 40pt;
+        font-size: 35pt;
       }
       h2 a{
         border-bottom: none;
@@ -162,6 +172,8 @@
       #chair, #links{
         margin: 0 auto;
         text-align: center;
+        width: 100vw;
+        height: 100vh;
         max-width: 950px;
         max-height: 950px;
         min-width: 300px;
@@ -196,34 +208,44 @@
       .menu, #menubg{
         top: 0;
         left: 0;
-        max-width: 480px;
+        max-width: 380px;
         /* height stuff */
-        width: 480px;
-        height: 480px;
+        width: 380px;
+        height: 380px;
         position: fixed;
+        display: none;
       }
 
       #menubg{
-        
+        background-color: rgb(11, 14, 11);
+        border: 5px solid rgb(11, 14, 11);
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        z-index: 100;
       }
 
       .menu{
         overflow-y: scroll;
-        display: none;
-        background-image: url("images/frame.png");
+        overflow: -moz-scrollbars-none;
+        /*background-image: url("images/frame.png");
         background-size: contain;
-        background-repeat: no-repeat;
-        background-color: rgb(11, 14, 11);
-        border: 5px solid rgb(11, 14, 11);
-        -webkit-border-radius: 35px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
+        background-repeat: no-repeat;*/
+        z-index: 150;
+      }
+
+      .menu::-webkit-scrollbar {
+        display: none;
       }
 
       @media only screen and (max-width: 600px) {
-        .menu{
+        .menu, #menubg{
           position: absolute;
-          top: 400px;
+          top: 60vh;
+          width: 100vw;
+          height: 100vw;
+          min-width: 300px;
+          min-height: 300px;
         }
       }
       </style>
@@ -239,12 +261,16 @@
     <div id="foreground">
       <div id="links">
         <div id="goldwash">
-          <img src="images/WORDMARK.png">
+          <img id="wordmark" src="images/WORDMARK.png">
         </div>
         <div id="bottom_links">
           <img id="music" src="images/MUSIC.png"> <img id="live" src="images/LIVE.png"> <img id="news" src="images/NEWS.png">
         </div>
       </div>
+    </div>
+
+    <div id="menubg">
+      <img src="images/frame.png">
     </div>
 
     <div id="music_menu" class="menu">
