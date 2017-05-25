@@ -101,11 +101,7 @@
           });
 
           $(document).click(function(event){
-            console.log($(event.target));
-            // if (!$(event.target).is("#music, #live, #news, .menu")){
-            //   // thanks https://stackoverflow.com/questions/10851312/document-click-not-in-elements-jquery
-            //   menuOff();
-            // }
+            //console.log($(event.target));
             if ($(event.target).is("#foreground, #background, #links, #wordmark")){
               // thanks https://stackoverflow.com/questions/10851312/document-click-not-in-elements-jquery
               menuOff();
@@ -127,7 +123,7 @@
         height: 100vh;
         font-family: 'Index', serif;
         font-weight: bold;
-        color: rgb(206, 136, 59);
+        color: rgb(206, 136, 59); /* orange */
         background-color: rgb(11, 14, 11);
       }
 
@@ -150,6 +146,7 @@
       h2{
         text-align: center;
         font-size: 35pt;
+        line-height: 160%;
       }
       h2 a{
         border-bottom: none;
@@ -157,9 +154,25 @@
 
       h3{
         text-align: center;
-        font-size: 11pt;
+        font-size: 10pt;
         padding-top: 5px;
       }
+
+      input[type="email"]{
+        width: 200px;
+        background-color: rgb(11, 14, 11);
+        font-size: 10pt;
+        color: rgb(206, 136, 59);
+        border: 2px solid rgb(206, 136, 59);
+        padding: 3px;
+        font-family: 'Index', serif;
+        text-align: center;
+      }
+      #mc_embed_signup{
+        width: 200px;
+        margin: 0 auto;
+      }
+
 
       #background, #foreground{
         height: 100vh;
@@ -241,11 +254,11 @@
       @media only screen and (max-width: 600px) {
         .menu, #menubg{
           position: absolute;
-          top: 60vh;
+          top: 70vh;
           width: 100vw;
-          height: 100vw;
           min-width: 300px;
           min-height: 300px;
+          margin-bottom: 30vh;
         }
       }
       </style>
@@ -285,15 +298,29 @@
       <h2>Stay Tuned...</h2>
       <h2>&nbsp;</h2>
       <h2>&nbsp;</h2>
-      <h2>&nbsp;</h2>
       <h3>North America Booking: LChenfeld@apa-agency.com</h3>
     </div>
 
     <div id="news_menu" class="menu">
       <h2>&nbsp;</h2>
-      <h2> newsletter box ! </h2>
+      <div id="mc_embed_signup">
+        <form action="//goldwashmusic.us14.list-manage.com/subscribe/post?u=df28c3bdb5aed78969b9856cd&amp;id=a85fc6600e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+            <span class="mc-field-group">
+              <input type="email" style="" value="subscribe for newsletter" name="EMAIL" class="required email" id="mce-EMAIL">
+            </span>
+            <span id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </span>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <span style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_df28c3bdb5aed78969b9856cd_a85fc6600e" tabindex="-1" value=""></span>
+              &nbsp; &nbsp; <span style="position: relative; top: 0px;" class="clear"><input style="display: none;" type="submit" value="subscribe for download" name="subscribe" id="mc-embedded-subscribe" class="button"></span>
+          </div>
+        </form>
+      </div>
+      <h3>&nbsp;</h3>
       <h2><a class="icon" target="_blank" href="https://www.facebook.com/Goldwashmusic/"><i class="ss-icon">facebook</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="http://twitter.com/goldwashmusic"><i class="ss-icon">twitter</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="https://www.instagram.com/goldwashmusic/"><i class="ss-icon">instagram</i></a></h2>
-      <h2>&nbsp;</h2>
+      <h3>&nbsp;</h3>
       <h3>Talk: goldwashmusic@gmail.com</h3>
       <h3>MGMT: jake@holographgroup.com</h3>
       <h3>Press: paul.odonnell@whiteboardpr.co.uk</h3>
