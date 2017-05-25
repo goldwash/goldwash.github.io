@@ -112,6 +112,12 @@
       </script>
 
     <style>
+
+      @font-face {
+        font-family: "Index";
+        src: url("/Index-Bold.otf") format("otf"),
+      }
+
       *{
         margin: 0;
         padding: 0;
@@ -123,15 +129,15 @@
         height: 100vh;
         font-family: 'Index', serif;
         font-weight: bold;
-        color: rgb(206, 136, 59); /* orange */
+        color: rgb(240, 117, 36); /* orange */
         background-color: rgb(11, 14, 11);
       }
 
       a{
-        color: rgb(206, 136, 59);
+        color: rgb(240, 117, 36);
         text-decoration: none;
         padding-bottom: 2px;
-        border-bottom: 1px solid rgb(206, 136, 59);
+        border-bottom: 1px solid rgb(240, 117, 36);
       }
 
       .icon{
@@ -160,13 +166,24 @@
 
       input[type="email"]{
         width: 200px;
-        background-color: rgb(11, 14, 11);
+        background-color: transparent;
+        /*color: rgb(255,182,90);*/
         font-size: 10pt;
-        color: rgb(206, 136, 59);
-        border: 2px solid rgb(206, 136, 59);
+        border: 2px solid rgb(255,182,90);
         padding: 3px;
         font-family: 'Index', serif;
         text-align: center;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        color: transparent;
+        background: url('images/goldsquare.jpg');
+        color: transparent;
+        -webkit-font-smoothing:antialiased;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       #mc_embed_signup{
         width: 200px;
@@ -229,8 +246,11 @@
         display: none;
       }
 
+      .menu a{
+      }
+
       #menubg{
-        background-color: rgb(11, 14, 11);
+        background-color: rgb(11, 14, 11); /* off-black */
         border: 5px solid rgb(11, 14, 11);
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;
@@ -239,12 +259,19 @@
       }
 
       .menu{
-        overflow-y: scroll;
+        overflow-y: hidden;
         overflow: -moz-scrollbars-none;
-        /*background-image: url("images/frame.png");
-        background-size: contain;
-        background-repeat: no-repeat;*/
         z-index: 150;
+      }
+      .menu a, .menu p, .menu h2, .menu h3{
+        color: transparent;
+        background: url('images/goldsquare.jpg');
+        color: transparent;
+        -webkit-font-smoothing:antialiased;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       .menu::-webkit-scrollbar {
@@ -267,7 +294,7 @@
 
     <div id="background">
       <div id="chair">
-        <img id="chairimg" src="images/big_bg.gif">
+        <img id="chairimg" src="images/big_boomerang.gif">
       </div>
     </div>
 
@@ -287,18 +314,53 @@
     </div>
 
     <div id="music_menu" class="menu">
+      <p>
       <h2>&nbsp;</h2>
       <h2><a href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21">Spotify</a></h2>
       <h2><a href="">iTunes</a></h2>
       <h2><a href="https://soundcloud.com/goldwash">Soundcloud</a></h2>
+    </p>
     </div>
 
     <div id="live_menu" class="menu">
+      <p>
+      <h3>&nbsp;</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
+      <h3>O2 Arena - 06/11</h3>
+      <h3>Wimbly Stadium - 06/13</h3>
+      <h3>Madison Sq Garden - 06/20</h3>
       <h2>&nbsp;</h2>
-      <h2>Stay Tuned...</h2>
       <h2>&nbsp;</h2>
       <h2>&nbsp;</h2>
+      <h3>&nbsp;</h3>
       <h3>North America Booking: LChenfeld@apa-agency.com</h3>
+    </p>
     </div>
 
     <div id="news_menu" class="menu">
@@ -318,13 +380,15 @@
           </div>
         </form>
       </div>
+      <p>
       <h3>&nbsp;</h3>
       <h2><a class="icon" target="_blank" href="https://www.facebook.com/Goldwashmusic/"><i class="ss-icon">facebook</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="http://twitter.com/goldwashmusic"><i class="ss-icon">twitter</i></a>&nbsp;&nbsp;&nbsp;<a class="icon" target="_blank" href="https://www.instagram.com/goldwashmusic/"><i class="ss-icon">instagram</i></a></h2>
-      <h3>&nbsp;</h3>
+      <h2>&nbsp;</h2>
       <h3>Talk: goldwashmusic@gmail.com</h3>
       <h3>MGMT: jake@holographgroup.com</h3>
       <h3>Press: paul.odonnell@whiteboardpr.co.uk</h3>
       <h3>North America Booking: LChenfeld@apa-agency.com</h3>
+    </p>
     </div>
 
   </body>
