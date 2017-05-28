@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Goldwash Music</title>
+      <title>Goldwash</title>
       <meta charset="UTF-8">
+      <meta name="description" content="Goldwash makes existential funk.">
+      <meta property="og:title" content="Goldwash"/>
+      <meta property="og:description" content="Goldwash makes existential funk."/>
+      <meta property="og:url" content="http://goldwashmusic.com"/>
+      <meta property="og:image" content="http://goldwashmusic.com/images/card.jpg"/>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
       <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
       <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
-      <link href="webfonts/ss-social-circle.css" rel="stylesheet" />
-
-      <!-- https://stackoverflow.com/questions/2385203/can-you-control-gif-animation-with-javascript -->
+      <!-- <script type="text/javascript" src="libgif.js"></script>
+		  <script type="text/javascript" src="rubbable.js"></script> -->
       <!-- https://github.com/buzzfeed/libgif-js -->
-
+      <link href="webfonts/ss-social-circle.css" rel="stylesheet" />
       <script type="text/javascript">
       function horizCenter(input){
         width = $(window).width();
@@ -65,6 +71,14 @@
         $('#news_menu').css('display','none');
       }
 
+      vertCenter('#chairimg');
+      horizCenter(".menu");
+      vertCenter(".menu");
+      adjustText();
+      vertCenter('#links');
+      vertCenter('#menubg');
+      horizCenter('#menubg');
+
         $(document).ready(function() {
           vertCenter('#chairimg');
           horizCenter(".menu");
@@ -82,6 +96,10 @@
             vertCenter('#links');
             vertCenter('#menubg');
             horizCenter('#menubg');
+          });
+
+          $('#ep_box').click(function(){
+            window.location.replace("./ep");
           });
 
           // $('#music_menu').slideToggle();
@@ -115,7 +133,7 @@
 
       @font-face {
         font-family: "Index";
-        src: url("/Index-Bold.otf") format("otf"),
+        src: url("webfonts/Index-Bold.otf") format('opentype');/*format("application/x-font-opentype");*/
       }
 
       *{
@@ -209,6 +227,16 @@
         min-width: 300px;
       }
 
+      /*.jsgif canvas{
+        margin: 0 auto;
+        text-align: center;
+        width: 100vw;
+        height: 100vh;
+        max-width: 950px;
+        max-height: 950px;
+        min-width: 300px;
+      }*/
+
       /* #chair needs to be vertically centered */
 
       #music, #live, #news{
@@ -239,11 +267,22 @@
         top: 0;
         left: 0;
         max-width: 380px;
+        max-height: 380px;
         /* height stuff */
         width: 380px;
         height: 380px;
         position: fixed;
         display: none;
+      }
+
+      #ep_box{
+        position: relative;
+        width: 12%;
+        height: 12%;
+        background-color: transparent;
+        cursor: pointer;
+        top: 28%;
+        left: 2%;
       }
 
       #menubg{
@@ -257,7 +296,7 @@
 
       .menu{
         overflow-y: scroll;
-        overflow: -moz-scrollbars-none;
+        overflow-x: hidden;
         z-index: 150;
         border: 5px solid transparent; /* to make spacing same as menubg */
       }
@@ -292,7 +331,15 @@
 
     <div id="background">
       <div id="chair">
-        <img id="chairimg" src="images/big_boomerang.gif">
+        <img id="chairimg" src="images/big_boomerang.gif" rel:auto_play="1" rel:rubbable="1">
+        <!-- <script type="text/javascript">
+				    // var chairgif = new SuperGif({ gif: document.getElementById('chairimg') } );
+				    // chairgif.load();
+
+            // var chairgif = new RubbableGif({ gif: document.getElementById('chairimg')});
+            // chairgif.load(function(){
+            // });
+			</script> -->
       </div>
     </div>
 
@@ -304,6 +351,7 @@
         <div id="bottom_links">
           <img id="music" src="images/MUSIC.png"> <img id="live" src="images/LIVE.png"> <img id="news" src="images/NEWS.png">
         </div>
+        <!-- <div id="ep_box"></div> -->
       </div>
     </div>
 
@@ -315,7 +363,7 @@
       <p>
       <h2>&nbsp;</h2>
       <h2><a href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21">Spotify</a></h2>
-      <h2><a href="">iTunes</a></h2>
+      <h2><a href="https://itunes.apple.com/us/artist/goldwash/id1077387422">iTunes</a></h2>
       <h2><a href="https://soundcloud.com/goldwash">Soundcloud</a></h2>
     </p>
     </div>
