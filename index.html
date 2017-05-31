@@ -102,9 +102,6 @@
             window.location.replace("./ep");
           });
 
-          // $('#music_menu').slideToggle();
-          // display: none
-
           $('#music').click(function(){
             menuOff();
             musicOn();
@@ -133,7 +130,7 @@
 
       @font-face {
         font-family: "Index";
-        src: url("webfonts/Index-Bold.otf") format('opentype');/*format("application/x-font-opentype");*/
+        src: url("webfonts/Index-Bold.otf") format('opentype');
       }
 
       *{
@@ -148,7 +145,7 @@
         font-family: 'Index', serif;
         font-weight: bold;
         color: rgb(240, 117, 36); /* orange */
-        background-color: rgb(11, 14, 11);
+        background-color: rgb(11, 14, 11); /* off-black */
       }
 
       a{
@@ -249,7 +246,6 @@
         margin: 0 auto;
         position: relative;
         top: 16%;
-        cursor: pointer;
       }
 
       #bottom_links{
@@ -362,9 +358,9 @@
     <div id="music_menu" class="menu">
       <p>
       <h2>&nbsp;</h2>
-      <h2><a href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21">Spotify</a></h2>
-      <h2><a href="https://itunes.apple.com/us/artist/goldwash/id1077387422">iTunes</a></h2>
-      <h2><a href="https://soundcloud.com/goldwash">Soundcloud</a></h2>
+      <h2><a target="_blank" href="https://open.spotify.com/artist/7yYa2im7sawSzuVkXx8W21">Spotify</a></h2>
+      <h2><a target="_blank" href="https://itunes.apple.com/us/artist/goldwash/id1077387422">iTunes</a></h2>
+      <h2><a target="_blank" href="https://soundcloud.com/goldwash">Soundcloud</a></h2>
     </p>
     </div>
 
